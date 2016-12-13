@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+       <title>Success</title>
+       {% load staticfiles %} <!-- ALWAYS REMEMBER THIS LINE OF CODE -->
+       <link rel="stylesheet" href="{% static "email_app/css/styles.css" %}">
+       <script src="https://use.typekit.net/iii7xtz.js"></script>
+       <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    </head>
+    <body>
+      <div id="wrapper">
+        <h2><a href="/">Enter New Email</a></h2>
+        {% if messages %}
+            {% for msg in messages %}
+            <div class="alert-success" role="alert">
+            {{msg}}
+            </div>
+            {% endfor %}
+          {% endif %}
+        {% for email in emails %}
+        <div class="success">
+        <p>{{email.email}}</p>
+        </div>
+        {% endfor %}
+
+      </div>
+    </body>
+</html>

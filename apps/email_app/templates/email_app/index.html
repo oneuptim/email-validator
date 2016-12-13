@@ -1,0 +1,27 @@
+<!Doctype html>
+<html>
+    <head>
+       <title>Email Validation</title>
+       {% load staticfiles %} <!-- ALWAYS REMEMBER THIS LINE OF CODE -->
+       <link rel="stylesheet" href="{% static "email_app/css/styles.css" %}">
+       <script src="https://use.typekit.net/iii7xtz.js"></script>
+       <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    </head>
+    <body>
+      <div id="wrapper">
+        <h1>Email Validator</h1>
+        {% if messages %}
+            {% for msg in messages %}
+            <div class="alert-error" role="alert">
+            {{msg}}
+            </div>
+            {% endfor %}
+          {% endif %}
+        <form action="/process" method="post">
+        {% csrf_token %}
+    		<input type="text" name="email" placeholder="Enter your email e.g. (example@email.com)">
+    		<input type="submit" value="Submit">
+        </form>
+      </div>
+    </body>
+</html>
